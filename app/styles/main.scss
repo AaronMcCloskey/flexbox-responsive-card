@@ -2,91 +2,102 @@ $icon-font-path: '../fonts/';
 // bower:scss
 @import "bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
 // endbower
-
-.browserupgrade {
-  margin: 0.2em 0;
-  background: #ccc;
-  color: #000;
-  padding: 0.2em 0;
+@import url('https://cdnjs.cloudflare.com/ajax/libs/sanitize.css/2.0.0/sanitize.min.css');
+@import url('https://fonts.googleapis.com/css?family=Saira');
+* {
+    box-sizing: border-box;
+    &::before,
+    &::after {
+        box-sizing: border-box;
+    }
 }
 
-/* Space out content a bit */
 body {
-  padding-top: 20px;
-  padding-bottom: 20px;
+    font-family: 'Saira', sans-serif;
+    font-size: 16px;
+    line-height: 1.75;
+    font-weight: 300;
+    color: #332F21;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 2rem;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6)), url('https://source.unsplash.com/random');
+    background-position: center center;
+    background-size: cover;
 }
 
-/* Everything but the jumbotron gets side spacing for mobile first views */
-.header,
-.marketing,
-.footer {
-  padding-right: 15px;
-  padding-left: 15px;
+@supports (background-blend-mode: multiply) {
+    body {
+        background-image: linear-gradient(#4A4A4A, #212121), url('https://source.unsplash.com/random');
+        background-blend-mode: multiply;
+    }
 }
 
-/* Custom page header */
-.header {
-  padding-bottom: 20px;
-  border-bottom: 1px solid #e5e5e5;
+h1 {
+    font-family: 'Saira', sans-serif;
+    font-weight: 700;
+    font-size: 2.25rem;
+    line-height: 1.3333;
 }
 
-/* Make the masthead heading the same height as the navigation */
-.header h3 {
-  margin-top: 0;
-  margin-bottom: 0;
-  line-height: 40px;
+.card {
+    display: flex;
+    flex-direction: column;
+    max-width: 62rem;
+    min-height: 75vh;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-/* Custom page footer */
-.footer {
-  padding-top: 19px;
-  color: #777;
-  border-top: 1px solid #e5e5e5;
+.card__image-container {
+    max-height: 15rem;
+    background-image: url('https://source.unsplash.com/random');
+    background-size: cover;
+    background-position: center center;
 }
 
-/* Customize container */
-@media (min-width: 768px) {
-  .container {
-    max-width: 730px;
-  }
-}
-.container-narrow > hr {
-  margin: 30px 0;
+.card__image {
+    opacity: 0;
+    pointer-events: none;
 }
 
-/* Main marketing message and sign up button */
-.jumbotron {
-  text-align: center;
-  border-bottom: 1px solid #e5e5e5;
-}
-.jumbotron .btn {
-  padding: 14px 24px;
-  font-size: 21px;
+.card__contents {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
 }
 
-/* Supporting marketing content */
-.marketing {
-  margin: 40px 0;
-}
-.marketing p + h4 {
-  margin-top: 28px;
+.card__header {
+    flex: 0 0 auto;
 }
 
-/* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
-  /* Remove the padding we set earlier */
-  .header,
-  .marketing,
-  .footer {
-    padding-right: 0;
-    padding-left: 0;
-  }
-  /* Space out the masthead */
-  .header {
-    margin-bottom: 30px;
-  }
-  /* Remove the bottom border on the jumbotron for visual effect */
-  .jumbotron {
-    border-bottom: 0;
-  }
+.card__footer {
+    flex: 0 0 auto;
+    margin-top: 2rem;
+    text-align: right;
+}
+
+.card__body {
+    flex: 1 1 auto;
+}
+
+.card__title {
+    margin-top: 0;
+}
+
+@media only screen and (min-width: 53rem) {
+    .card {
+        flex-direction: row;
+        min-height: 60vh;
+    }
+    .card__image-container {
+        flex: 0 1 45%;
+        max-height: inherit;
+    }
+    .card__contents {
+        flex: 1 1 55%;
+        padding: 3rem;
+    }
 }
